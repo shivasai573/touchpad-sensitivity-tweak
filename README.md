@@ -1,3 +1,5 @@
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 # 🖱️ touchpad-sensitivity-tweak
 
 A universal bash script to adjust touchpad scroll sensitivity for Linux distributions using GNOME (Fedora, Ubuntu, Arch, etc.).
