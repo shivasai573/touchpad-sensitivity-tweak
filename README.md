@@ -46,4 +46,10 @@ sudo nano /etc/libinput.conf
 
 Change the scroll-factor value (e.g., 0.2 for even slower, 0.5 for faster), save, and restart your session.
 
-This project utilizes the excellent libinput-config utility created by warningnoname.
+
+This project utilizes the excellent libinput-config utility created by warningnoname
+
+# If you want to revert the changes : 
+
+sudo rm /etc/libinput.conf
+# Then restart your session
