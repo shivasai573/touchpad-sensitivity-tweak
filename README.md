@@ -20,7 +20,7 @@ The script automatically detects your package manager and installs the necessary
 
 1. **Clone the repository:**
 
-   git clone [https://github.com/YOUR_USERNAME/touchpad-sensitivity-tweak.git](https://github.com/YOUR_USERNAME/touchpad-sensitivity-tweak.git)
+   git clone https://github.com/shivasai573/touchpad-sensitivity-tweak.git
    cd touchpad-sensitivity-tweak
 
 2. **Make the script executable:**
