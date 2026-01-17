@@ -20,10 +20,11 @@ The script automatically detects your package manager and installs the necessary
 
 1. **Clone the repository:**
 
-   git clone [https://github.com/YOUR_USERNAME/touchpad-sensitivity-tweak.git](https://github.com/YOUR_USERNAME/touchpad-sensitivity-tweak.git)
+   git clone https://github.com/shivasai573/touchpad-sensitivity-tweak.git
+   <br>
    cd touchpad-sensitivity-tweak
 
-2. **Make the script executable:**
+3. **Make the script executable:**
 
 Bash
 
@@ -45,4 +46,10 @@ sudo nano /etc/libinput.conf
 
 Change the scroll-factor value (e.g., 0.2 for even slower, 0.5 for faster), save, and restart your session.
 
-This project utilizes the excellent libinput-config utility created by warningnoname.
+
+This project utilizes the excellent libinput-config utility created by warningnoname
+
+# If you want to revert the changes : 
+
+sudo rm /etc/libinput.conf
+# Then restart your session
