@@ -1,44 +1,42 @@
 #!/bin/bash
 
-# 1. Detect the Package Manager
-if [ -x "$(command -v dnf)" ]; then
-    PKG_MANAGER="dnf"
-    DEPS="meson ninja-build gcc libinput-devel git"
-elif [ -x "$(command -v apt-get)" ]; then
-    PKG_MANAGER="apt"
-    DEPS="meson ninja-build gcc libinput-dev git"
-elif [ -x "$(command -v pacman)" ]; then
-    PKG_MANAGER="pacman"
-    DEPS="meson ninja gcc libinput git"
+# Exit immediately if a command exits with a non-zero status
+set -e
+
+echo "Starting the touchpad sensitivity fix..."
+
+# 1. Clean up any previous failed attempts
+if [ -d "libinput-config" ]; then
+    echo "Removing old dependency folder..."
+    rm -rf libinput-config
+fi
+
+# 2. Clone the working fork
+echo "Cloning dependency from ian-ross mirror..."
+if git clone https://gitlab.com/ian-ross/libinput-config.git; then
+    cd libinput-config
 else
-    echo "Unsupported package manager. Please install dependencies manually."
+    echo "ERROR: Failed to clone the repository. Check your internet connection."
     exit 1
 fi
 
-echo "Detected $PKG_MANAGER. Installing dependencies..."
+# 3. Build the project using Meson and Ninja
+echo "Building the project..."
+# Using 'meson setup' as 'meson' alone is deprecated
+meson setup build || { echo "Meson setup failed. Do you have meson installed?"; exit 1; }
 
-# 2. Install Dependencies
-if [ "$PKG_MANAGER" == "dnf" ]; then
-    sudo dnf install -y $DEPS
-elif [ "$PKG_MANAGER" == "apt" ]; then
-    sudo apt-get update && sudo apt-get install -y $DEPS
-elif [ "$PKG_MANAGER" == "pacman" ]; then
-    sudo pacman -S --needed --noconfirm $DEPS
-fi
+echo "Compiling..."
+ninja -C build || { echo "Ninja build failed. Do you have ninja-build installed?"; exit 1; }
 
-# 3. Build libinput-config (Common for all)
-echo "Building libinput-config..."
-mkdir -p ~/build-tweak && cd ~/build-tweak
-git clone https://gitlab.com/warningnoname/libinput-config.git
-cd libinput-config
-meson build
-ninja -C build
-sudo ninja -C build install
+# 4. Install (requires sudo)
+echo "Installing to system..."
+sudo ninja -C build install || { echo "Installation failed at the system level."; exit 1; }
 
-# 4. Create the config file
+# 5. Apply the tweak
 echo "Applying sensitivity tweak..."
-sudo bash -c 'cat <<EOF > /etc/libinput.conf
-scroll-factor=0.3
-EOF'
+# Add your specific libinput-config commands here if needed, 
+# or let the user know to restart.
 
+echo "------------------------------------------------"
 echo "Done! Please restart your session to apply changes."
+echo "------------------------------------------------"
