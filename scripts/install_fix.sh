@@ -13,7 +13,7 @@ fi
 
 # 2. Clone the working fork
 echo "Cloning dependency from ian-ross mirror..."
-if git clone https://gitlab.com/ian-ross/libinput-config.git; then
+if git clone https://github.com/lz42/libinput-config.git; then
     cd libinput-config
 else
     echo "ERROR: Failed to clone the repository. Check your internet connection."
