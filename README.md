@@ -53,3 +53,4 @@ This project utilizes the excellent libinput-config utility created by warningno
 
 sudo rm /etc/libinput.conf
 # Then restart your session
+# "If this tweak helped you, please consider giving it a ⭐ to help others find it!"
