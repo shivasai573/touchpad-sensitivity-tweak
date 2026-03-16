@@ -24,13 +24,13 @@ echo "📦 Detecting dependencies for $PRETTY_NAME..."
 
 case "$OS" in
     fedora)
-        dnf install -y meson ninja-build libinput-devel git
+        dnf install -y meson ninja-build libinput-devel git gcc gcc-c++ make
         ;;
     ubuntu|debian|linuxmint|pop)
-        apt update && apt install -y meson ninja-build libinput-dev git
+        apt update && apt install -y meson ninja-build libinput-dev git gcc g++ make
         ;;
     arch|manjaro)
-        pacman -S --needed --noconfirm meson ninja libinput git
+        pacman -S --needed --noconfirm meson ninja libinput git gcc make
         ;;
     *)
         echo "⚠️  Unknown distribution ($OS). Please ensure meson, ninja, and libinput headers are installed."
