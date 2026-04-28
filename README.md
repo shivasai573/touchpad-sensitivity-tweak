@@ -91,6 +91,6 @@ _Don't forget to restart your session after removing the file!_
 
 ---
 
-**Credits:** This project utilizes the excellent `libinput-config` utility created by @warningnoname
+**Credits:** This project utilizes the excellent `libinput-config` utility created by [@warningnonpotablewater](https://gitlab.com/warningnonpotablewater)
 
  ⭐ **If this tweak helped you, please consider giving the repository a star to help others find it!**
