@@ -3,9 +3,9 @@
 
 # 🖱️ touchpad-sensitivity-tweak
 
-A universal bash script to adjust touchpad scroll sensitivity for Linux distributions using GNOME (Fedora, Ubuntu, Arch, etc.).
+A universal bash script to adjust touchpad scroll sensitivity for Linux distributions using Wayland (compatible with GNOME, KDE, and other Wayland-based desktop environments).
 ## ❓ The Problem
-Many Linux distributions, particularly those running GNOME, do not offer a native GUI slider to adjust the touchpad scrolling speed. For many laptops, the default "scroll factor" is far too sensitive, making navigation difficult and erratic.
+Many Linux distributions using Wayland do not offer a native GUI slider to adjust the touchpad scrolling speed. For many laptops, the default "scroll factor" is far too sensitive, making navigation difficult and erratic.
 
 ## 🚀 The Solution
 This project automates the installation of `libinput-config` and allows you to set a custom `scroll-factor` (defaulting to **0.3**) to make scrolling feel natural and precise across different distributions.
